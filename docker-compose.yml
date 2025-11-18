@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo:6
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URL=mongodb://mongo:27017
+      - ESP32_URL=http://192.168.1.7:81/stream
+    depends_on:
+      - mongo
+    volumes:
+      - ./backend:/app
+      - ./ai-models:/app/ai-models
+      - ./models:/app/models
+    # to use GPU, add runtime/nvidia settings depending on your Docker config
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API=http://backend:8000
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:
