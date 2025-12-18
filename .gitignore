@@ -1,0 +1,55 @@
+############################
+# Python
+############################
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+############################
+# Virtual Environment
+############################
+venv/
+.env
+.env.*
+
+############################
+# AI / YOLO / Model files
+############################
+ai-models/
+models/
+weights/
+checkpoints/
+
+*.pt
+*.onnx
+*.h5
+*.ckpt
+*.pb
+
+############################
+# Logs / Runtime
+############################
+logs/
+*.log
+nohup.out
+
+############################
+# IDE / OS
+############################
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+############################
+# Frontend / Node
+############################
+node_modules/
+public/
+src/
+package-lock.json
+yarn.lock
